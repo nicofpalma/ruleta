@@ -1,0 +1,237 @@
+:root{
+    --escala: 600px;
+    --giroRuleta: 0deg;
+}
+
+*{
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+
+#container{
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+#cartelGanador{
+    position: absolute;
+    left: -150px;
+    top: -50px;
+    background-color: white;
+    min-height: 55px;
+    width: 300px;
+    font-weight: bold;
+    border-radius: 100px;
+}
+
+#marcador{
+    position: absolute;
+    z-index: 10;
+    top: -20px;
+    background-color: black;
+    border: 1px solid white;
+    height: 100px;
+    width: 5px;
+    margin-left: 4px;
+    pointer-events: none;
+}
+
+img{
+    position:absolute;
+    width: var(--escala);
+    height: var(--escala);
+    opacity: 50%;
+    z-index: 2;
+    transform: rotate(90deg);
+    pointer-events: none;
+}
+
+body{
+    overflow: hidden;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
+    background: radial-gradient(circle, rgba(47,39,179,1) 0%, rgba(104,75,210,1) 39%, rgba(0,212,255,1) 100%); 
+}
+
+
+.particle {
+    position:absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ff0000;
+    opacity: 0.8;
+}
+
+  
+
+/* Animación de las partículas */
+@keyframes particleAnimation {
+    0% {
+        transform: translate(0, 0) rotate(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(200vw * var(--translate-x)), calc(200vh * var(--translate-y))) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Aplica la animación a todas las partículas */
+.particle {
+    animation: particleAnimation 3s linear forwards;
+    
+}
+
+h1{
+    text-align: center;
+    margin: 0;
+    padding-top: 20px;
+    color: white;
+}
+
+#sortear{
+    position: absolute;
+    z-index: 1;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    width: 60px;
+    height: 60px;
+    background-color: black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    border: 2px solid white;
+    transition: transform 1s ease-in-out;
+}
+
+#sortear button{
+    color: white;
+    background-color: unset;
+    border:unset;
+    cursor: pointer;
+    
+}
+
+#sortear:hover{
+    transform: scale(1.5);
+}
+/* 
+#sortear:not(:hover) {
+    transform: scale(1);
+} */
+
+.separador{
+    position: absolute;
+    top: 0;
+    left: calc(var(--escala) / 2 - 2px);
+    height: calc(var(--escala) / 2);
+    background-color: white;
+    width: 4px;
+    transform-origin: bottom;
+}
+
+.nombre-item {
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-left: 40px;
+    margin-top: 60px;
+    rotate:90deg;
+    transition: transform 2s ease-in-out;
+}
+
+.nombre-item:hover{
+    transform: rotate(-20deg);
+}
+
+#ruleta{
+    position: relative;
+    width: var(--escala);
+    height: var(--escala);
+    border: 2px solid white;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    transition: box-shadow 0.5s ease-out;
+    
+}
+
+#ruleta:hover{
+    box-shadow: 0 0 30px white;
+}
+
+.opcion{
+    position: absolute;
+    width: var(--escala);
+    height: var(--escala);
+    cursor: pointer;
+}
+
+dialog {
+    opacity: 95%;
+    padding:30px;
+    border-radius:5px;
+    border:unset;
+    
+
+}
+
+dialog::backdrop{
+    backdrop-filter: blur(2px);
+}
+
+dialog button {
+    user-select: none;
+}
+
+footer {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#tituloForm{
+    display:flex;
+    justify-content: space-around;
+    font-weight: bold;
+    text-decoration: underline;
+    gap: 40px;
+}
+
+#formContainer div{
+    display: flex;
+}
+
+#formContainer div label{
+    margin-right: auto;
+}
+
+.girar{
+    animation-name: girar;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(.11,.22,0,.99);
+}
+
+
+
+@keyframes girar {
+    100%{
+        transform: rotate(var(--giroRuleta));
+    }
+}
+
